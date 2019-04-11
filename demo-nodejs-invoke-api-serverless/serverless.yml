@@ -1,0 +1,21 @@
+service: 
+  name: demo-nodejs-invoke-api-serverless
+
+custom:
+  serverless-offline:
+    port: 3000
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  createMessage:
+    handler: src/message.handler.createMessage
+    events:
+      - http:
+          path: message
+          method: get                
+
+plugins:
+  - serverless-offline

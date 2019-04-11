@@ -1,0 +1,29 @@
+service: 
+  name: demo-nodejs-hello-serverless
+
+custom:
+  serverless-offline:
+    port: 3000
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  api:
+    handler: src/handler.hello
+    events:
+      - http:
+          path: "{proxy+}"
+          method: any
+          cors: true
+   
+  hello:
+    handler: src/handler.hello
+    events:
+      - http:
+          path: hello
+          method: get             
+
+plugins:
+  - serverless-offline
