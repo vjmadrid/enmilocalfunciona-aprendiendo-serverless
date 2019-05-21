@@ -1,0 +1,132 @@
+service: 
+  name: demo-nodejs-dynamodb-serverless
+
+frameworkVersion: ">=1.31.1"
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline #serverless-offline needs to be last in the list
+
+package:
+  exclude:
+    - "bin/**"
+    - "resources/**"
+    - "reports/**"
+    - ".*"
+    - "*.md"
+    - "package-lock.json"
+
+custom:
+   # Global configuration
+  config:
+    stage-default : local
+    region-default : us-east-1
+    file-env: ${file(config/config.env.${self:provider.stage}.json)}
+    profiles:
+      local: local-acme-profile
+      dev: dev-acme-profile
+      prod: prod-acme-profile
+  # serverless-offline configuration    
+  serverless-offline: 
+    port: 3000
+  # serverless-dynamodb-local configuration  
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+    migration:
+      dir: offline/migrations   
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, self:custom.config.stage-default}
+  profile: ${self:custom.config.profiles.${self:provider.stage}}
+  region: ${opt:region, self:custom.config.region-default}
+  versionFunctions: false
+  #timeout: 10 # optional (default 6)
+  environment:
+    NODE_ENV: ${self:custom.config.file-env.NODE_ENV}
+    DYNAMODB_TABLE: ${self:custom.config.file-env.DYNAMODB_TABLE}
+    CONFIG_LOCAL_DYNAMODB : ${self:custom.config.file-env.CONFIG_LOCAL_DYNAMODB}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+functions:
+
+  list:
+    handler: src/message.handler.list.listMessages
+    events:
+      - http:
+          path: message
+          method: get
+          cors: true
+  listService:
+    handler: src/message.handler.list.listMessagesService
+    events:
+      - http:
+          path: message/service
+          method: get
+          cors: true        
+          
+  create:
+    handler: src/message.handler.create.createMessage
+    events:
+      - http:
+          path: message
+          method: post
+          cors: true
+  createService:
+    handler: src/message.handler.create.createMessageService
+    events:
+      - http:
+          path: message/service
+          method: post
+          cors: true        
+  
+  delete:
+    handler: src/message.handler.delete.deleteMessage
+    events:
+      - http: 'DELETE /message/{id}'
+  deleteService:
+    handler: src/message.handler.delete.deleteMessageService
+    events:
+      - http: 'DELETE /message/service/{id}'    
+      
+  deleteAll:
+    handler: src/message.handler.delete.all.deleteAllMessages
+    events:
+      - http: 'DELETE /message'  
+  deleteAllService:
+    handler: src/message.handler.delete.all.deleteAllMessagesService
+    events:
+      - http: 'DELETE /message/service'     
+
+resources:
+  Resources:
+    example-table:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        

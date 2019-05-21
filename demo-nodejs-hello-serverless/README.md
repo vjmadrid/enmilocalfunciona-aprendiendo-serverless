@@ -8,6 +8,7 @@ Proyecto que Muestra un mensaje "Hello World" ("Todo un clásico de cualquier de
 
 ## Prerrequisitos
 
+
 Instalar las siguientes herramientas y frameworks:
 * Node.js 8.10 o superior
 * Editor de código
@@ -26,17 +27,17 @@ Generales Nodejs
 >* Serverless se ejecuta en Node v4 o superior
 >* Nodejs 8.10 es el límite actual de AWS Lambda
 
-* Instalar y Configurar Node.js (Documento **workspace-serverless-framework-lab/doc/README-instalacion-configuracion-node.md**)
-* Instalar y Configurar NVM (Documento **workspace-serverless-framework-lab/doc/README-instalacion-configuracion-nvm.md**)
+* Instalar y Configurar Node.js (Documento **git:vjmadrid/enmilocalfunciona-aprendiendo-serverless/doc/README-instalacion-configuracion-node.md**)
+* Instalar y Configurar NVM (Documento **git:vjmadrid/enmilocalfunciona-aprendiendo-serverless/doc/README-instalacion-configuracion-nvm.md**)
 
 Generales
 
-* Instalar y Configurar Serverless Framework (Documento **workspace-serverless-framework-lab/doc/README-instalacion-configuracion-serverless.md**)
-* Instalar y Configurar Serverless-Offline (Documento **workspace-serverless-framework-lab/doc/README-instalacion-configuracion-serverless-offline.md**)
+* Instalar y Configurar Serverless Framework (Documento **git:vjmadrid/enmilocalfunciona-aprendiendo-serverless/doc/README-instalacion-configuracion-serverless.md**)
+* Instalar y Configurar Serverless-Offline (Documento **git:vjmadrid/enmilocalfunciona-aprendiendo-serverless/doc/README-instalacion-configuracion-serverless-offline.md**)
 
 Específicos
 
-* Preparar y Configurar un proyecto genérica (Documento **workspace-nodejs-lab/doc/README-preparar-configurar-proyecto.md**)
+* Preparar y Configurar un proyecto genérica (Documento **git:vjmadrid/enmilocalfunciona-aprendiendo-serverless/doc/README-preparar-configurar-proyecto.md**)
 
 Este proyecto sigue los pasos básicos de construcción
 

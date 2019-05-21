@@ -5,6 +5,9 @@ custom:
   serverless-offline:
     port: 3000
 
+# provider:
+#  name: aws
+#  runtime: nodejs8.10
 provider:
   name: aws
   runtime: nodejs8.10
