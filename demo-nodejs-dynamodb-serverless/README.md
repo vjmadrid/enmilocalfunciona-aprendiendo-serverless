@@ -241,7 +241,7 @@ En este fichero se ubican los detalles de configuración ( de cada una de los el
 
 Se han establecido variables de entorno para facilitar su configuración
 
-# 6. Ejecutar el Proyecto
+### Ejecutar el Proyecto
 
 
 Ejecutar la tarea "start"
@@ -288,7 +288,7 @@ Serverless: Offline listening on http://localhost:3000
 El proyecto quedaría listo para usarse
 
 
-## 6.2 Probar REST
+### Probar REST
 
 Se puede ejecutar algo como lo siguiente :
 
@@ -346,7 +346,7 @@ Donde se mostraría una lista con los mensajes borrados
 
 Revisar tambien los logs de la consola
 
-## 6.3 Probar con Invoke Local
+### Probar con Invoke Local
 
 Se puede ejecutar algo como lo siguiente :
 
