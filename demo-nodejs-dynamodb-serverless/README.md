@@ -212,10 +212,10 @@ Todo el código se ubica en el directorio : src/
 * **message.handler.delete.js** : Manejador de borrado especifico de mensajes de la tabla de dynamodb
 * **message.handler.list.js** : Manejador de listado de todos los mensajes de la tabla de dynamodb
 
-> Los manejadores se han sideñadi pensando en dos enfoques CON y sin la utilización de una capa de servicio encargada de la gestión y operativa contra dynamodb
+> Los manejadores se han diseñado pensando en dos enfoques CON y sin la utilización de una capa de servicio encargada de la gestión y operativa contra dynamodb
 
 
-## 5.2 Configuración del Conector Nodejs para Dynamodb
+## Configuración del Conector Nodejs para Dynamodb
 
 Existe una pieza en el proyecto encargada de realizar las operativas con la base de datos Dynamodb : src/connector/dynamodb
 
