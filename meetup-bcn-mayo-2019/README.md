@@ -1,7 +1,7 @@
 # Serverless Framework Meetup - BCN 2019
 Monolitos… Entornos virtualizados… microservicios… ¿y ahora serverless? ¿Qué es? ¿Puedo trabajar con ello sin tener que poner una tarjeta de crédito? ¿Qué cambia en nuestra manera de trabajar?
 
-![Evolution of deployment](images/chart_evolutionofdeployment.png)
+![Evolution of deployment](images/images_chart_evolutionofdeployment.png)
 
 Serverless es un tipo de arquitectura donde las máquinas dejan de existir y el código se ejecuta en ambientes suministrados por los distintos proveedores cloud.
 
